@@ -1,4 +1,4 @@
-class CreateActsAsAlertableAlerts < ActiveRecord::Migration
+class CreateActsAsAlertableAlerts < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :acts_as_alertable_alerts do |t|
       t.belongs_to :alertable, polymorphic: true
