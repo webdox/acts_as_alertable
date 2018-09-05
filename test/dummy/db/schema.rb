@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905123320) do
+ActiveRecord::Schema.define(version: 20180905170501) do
 
   create_table "acts_as_alertable_alert_alerteds", force: :cascade do |t|
     t.integer  "alert_id"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20180905123320) do
     t.integer  "alertable_id"
     t.string   "alertable_type"
     t.string   "observable_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "kind",            default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end

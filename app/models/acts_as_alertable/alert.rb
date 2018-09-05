@@ -9,6 +9,8 @@ module ActsAsAlertable
     	has_many source_type.pluralize.to_sym, :through => :alert_alerteds, :source => :alerted, :source_type => source_type.camelize
   	end
 
+  	enum kind: [:date_trigger, :simple_periodic, :advanced_periodic]
+
   	# Alert instance Methods
   	def observable
 		observable_date || 'created_at'
