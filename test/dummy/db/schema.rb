@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905134250) do
+ActiveRecord::Schema.define(version: 20180905123320) do
+
+  create_table "acts_as_alertable_alert_alerteds", force: :cascade do |t|
+    t.integer  "alert_id"
+    t.integer  "alerted_id"
+    t.string   "alerted_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "acts_as_alertable_alert_alerteds", ["alert_id"], name: "index_acts_as_alertable_alert_alerteds_on_alert_id"
 
   create_table "acts_as_alertable_alerts", force: :cascade do |t|
     t.integer  "alertable_id"
