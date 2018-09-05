@@ -10,9 +10,9 @@ module ActsAsAlertable
 		@user2 = User.create! name: 'User #2', email: "user2@alertable.com"
 		@alert1.users << @user1
 
-		@comment = Comment.create!
+		@comment = Comment.create! title: "Comment #1"
 		@comment.users << [@user1, @user2]
-		@comment_alert = @comment.alerts.create!
+		@comment_alert = @comment.alerts.create! observable_date: :title
 		@comment_alert.users << @user2
 	end
 
@@ -36,12 +36,20 @@ module ActsAsAlertable
 		end
 
 		it "alert1 kind must be date_trigger" do
-    		@alert1.kind.should eq('date_trigger')
-    	end
+			@alert1.kind.should eq('date_trigger')
+		end
 
-    	it "comment_alert users must be article users" do
-    		@comment_alert.user_alerteds.pluck(:name).should eq([@user1.name, @user2.name])
-    	end
+		it "alert1 cron_format must be '0 0 1 * *'" do
+			@alert1.cron_format.should eq('0 0 1 * *')
+		end
+
+		it "comment_alert users must be article users" do
+			@comment_alert.user_alerteds.pluck(:name).should eq([@user1.name, @user2.name])
+		end
+
+		it "comment_alert trigger_date must be comment title" do
+			@comment_alert.trigger_date.should eq(@comment.title)
+		end
 	end
   end
 end

@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20180905214715) do
     t.string   "name"
     t.string   "observable_date"
     t.integer  "kind",            default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "cron_format",     default: "0 0 1 * *"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "alertable_articles", force: :cascade do |t|
