@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateActsAsAlertableAlerts < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :acts_as_alertable_alerts do |t|
