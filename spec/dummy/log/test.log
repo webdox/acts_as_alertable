@@ -71,3 +71,72 @@ Migrating to CreateActsAsAlertableAlertAlerteds (20180905170501)
   [1m[35m (0.4ms)[0m  rollback transaction
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAlertableArticles (20180905211311)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "alertable_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905211311"]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:16:16.963319"], ["updated_at", "2018-09-05 21:16:16.963319"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:16:29.637250"], ["updated_at", "2018-09-05 21:16:29.637250"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:16:39.060876"], ["updated_at", "2018-09-05 21:16:39.060876"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 3], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:16:39.079847"], ["updated_at", "2018-09-05 21:16:39.079847"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 3], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:16:39.081387"], ["updated_at", "2018-09-05 21:16:39.081387"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(#<RSpec::Matchers::BuiltIn::Eq:0x007fa8e6a8bf38>) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 3], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:16:59.509340"], ["updated_at", "2018-09-05 21:16:59.509340"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 4], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:16:59.528639"], ["updated_at", "2018-09-05 21:16:59.528639"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 4], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:16:59.529992"], ["updated_at", "2018-09-05 21:16:59.529992"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mActsAsAlertable::Alert Load (0.3ms)[0m  SELECT "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 4], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 4], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(#<RSpec::Matchers::BuiltIn::Eq:0x007fae129a75a0>) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 4], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:17:39.667104"], ["updated_at", "2018-09-05 21:17:39.667104"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 5], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:17:39.690951"], ["updated_at", "2018-09-05 21:17:39.690951"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 5], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:17:39.693015"], ["updated_at", "2018-09-05 21:17:39.693015"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 5], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m

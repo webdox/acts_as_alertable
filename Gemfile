@@ -13,5 +13,4 @@ gemspec
 # To use a debugger
 group :development, :test do
 	gem 'pry'
-	gem 'rspec', '~> 3.6'
 end

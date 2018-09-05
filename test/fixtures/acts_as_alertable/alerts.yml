@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  alertable_id: 
-  observable_date: MyString
-
-two:
-  alertable_id: 
-  observable_date: MyString
