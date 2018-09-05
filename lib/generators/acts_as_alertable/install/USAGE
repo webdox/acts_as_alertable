@@ -1,0 +1,8 @@
+Description:
+    This task will generate the acts_as_alertable migrations
+
+Example:
+    rails generate install
+
+    This will create:
+        db/migrate/[timestamp]_create_acts_as_alertable_alerts.rb
