@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905211311) do
+ActiveRecord::Schema.define(version: 20180905214715) do
 
   create_table "acts_as_alertable_alert_alerteds", force: :cascade do |t|
     t.integer  "alert_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180905211311) do
   create_table "acts_as_alertable_alerts", force: :cascade do |t|
     t.integer  "alertable_id"
     t.string   "alertable_type"
+    t.string   "name"
     t.string   "observable_date"
     t.integer  "kind",            default: 0
     t.datetime "created_at",                  null: false
@@ -34,6 +35,28 @@ ActiveRecord::Schema.define(version: 20180905211311) do
 
   create_table "alertable_articles", force: :cascade do |t|
     t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments_users", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+  end
+
+  add_index "comments_users", ["comment_id"], name: "index_comments_users_on_comment_id"
+  add_index "comments_users", ["user_id"], name: "index_comments_users_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

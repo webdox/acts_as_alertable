@@ -19,5 +19,9 @@ module ActsAsAlertable
 	def trigger_date
 		alertable.try(observable)
 	end
+
+	def user_alerteds
+		alertable.try(:alerteds) || users
+	end
   end
 end

@@ -140,3 +140,637 @@ Migrating to CreateAlertableArticles (20180905211311)
   [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 5], ["alertable_type", "AlertableArticle"]]
   [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20180905211932)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905211932"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:23:18.836678"], ["updated_at", "2018-09-05 21:23:18.836678"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 6], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:23:18.856337"], ["updated_at", "2018-09-05 21:23:18.856337"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 6], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:23:18.859228"], ["updated_at", "2018-09-05 21:23:18.859228"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:23:18.864889"], ["updated_at", "2018-09-05 21:23:18.864889"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 1], ["alerted_id", 1], ["alerted_type", "User"], ["created_at", "2018-09-05 21:23:18.886855"], ["updated_at", "2018-09-05 21:23:18.886855"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 6], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 1], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 1], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:25:54.573100"], ["updated_at", "2018-09-05 21:25:54.573100"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 7], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:25:54.595352"], ["updated_at", "2018-09-05 21:25:54.595352"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 7], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:25:54.599186"], ["updated_at", "2018-09-05 21:25:54.599186"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:25:54.605835"], ["updated_at", "2018-09-05 21:25:54.605835"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 3], ["alerted_id", 2], ["alerted_type", "User"], ["created_at", "2018-09-05 21:25:54.627899"], ["updated_at", "2018-09-05 21:25:54.627899"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 3], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 7], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 3], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:26:46.968116"], ["updated_at", "2018-09-05 21:26:46.968116"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 8], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:26:46.989327"], ["updated_at", "2018-09-05 21:26:46.989327"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 8], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:26:46.992761"], ["updated_at", "2018-09-05 21:26:46.992761"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:26:46.997991"], ["updated_at", "2018-09-05 21:26:46.997991"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 5], ["alerted_id", 3], ["alerted_type", "User"], ["created_at", "2018-09-05 21:26:47.020560"], ["updated_at", "2018-09-05 21:26:47.020560"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 8], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 5], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 5], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:06.218457"], ["updated_at", "2018-09-05 21:29:06.218457"]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 9], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:06.242132"], ["updated_at", "2018-09-05 21:29:06.242132"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 9], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:06.245559"], ["updated_at", "2018-09-05 21:29:06.245559"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:06.252760"], ["updated_at", "2018-09-05 21:29:06.252760"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 7], ["alerted_id", 4], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:06.268412"], ["updated_at", "2018-09-05 21:29:06.268412"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 7], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 9], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 7], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:12.568106"], ["updated_at", "2018-09-05 21:29:12.568106"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 10], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:12.588401"], ["updated_at", "2018-09-05 21:29:12.588401"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 10], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:12.591550"], ["updated_at", "2018-09-05 21:29:12.591550"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:12.596849"], ["updated_at", "2018-09-05 21:29:12.596849"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 9], ["alerted_id", 5], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:12.611525"], ["updated_at", "2018-09-05 21:29:12.611525"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 9], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 10], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 9], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:23.696716"], ["updated_at", "2018-09-05 21:29:23.696716"]]
+  [1m[35m (6.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 11], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:23.719872"], ["updated_at", "2018-09-05 21:29:23.719872"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 11], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:23.722315"], ["updated_at", "2018-09-05 21:29:23.722315"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:23.729016"], ["updated_at", "2018-09-05 21:29:23.729016"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 11], ["alerted_id", 6], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:23.743695"], ["updated_at", "2018-09-05 21:29:23.743695"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 11], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 11], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 11], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:35.084909"], ["updated_at", "2018-09-05 21:29:35.084909"]]
+  [1m[35m (6.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 12], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:35.109344"], ["updated_at", "2018-09-05 21:29:35.109344"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 12], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:35.112557"], ["updated_at", "2018-09-05 21:29:35.112557"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:35.117829"], ["updated_at", "2018-09-05 21:29:35.117829"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 13], ["alerted_id", 7], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:35.132292"], ["updated_at", "2018-09-05 21:29:35.132292"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 13], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 12], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 13], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:38.381857"], ["updated_at", "2018-09-05 21:29:38.381857"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 13], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:38.395305"], ["updated_at", "2018-09-05 21:29:38.395305"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 13], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:38.397812"], ["updated_at", "2018-09-05 21:29:38.397812"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:38.402968"], ["updated_at", "2018-09-05 21:29:38.402968"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 15], ["alerted_id", 8], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:38.417974"], ["updated_at", "2018-09-05 21:29:38.417974"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 13], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 15], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 15], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 13]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:29:58.275765"], ["updated_at", "2018-09-05 21:29:58.275765"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 14], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:58.298796"], ["updated_at", "2018-09-05 21:29:58.298796"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 14], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:29:58.301890"], ["updated_at", "2018-09-05 21:29:58.301890"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:29:58.307989"], ["updated_at", "2018-09-05 21:29:58.307989"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 17], ["alerted_id", 9], ["alerted_type", "User"], ["created_at", "2018-09-05 21:29:58.322559"], ["updated_at", "2018-09-05 21:29:58.322559"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 14], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 17], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 17], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateActsAsAlertableAlerts (20180905183937)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "acts_as_alertable_alerts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "alertable_id" integer, "alertable_type" varchar, "name" varchar, "observable_date" varchar, "kind" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180905183937"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateActsAsAlertableAlertAlerteds (20180905183938)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "acts_as_alertable_alert_alerteds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "alert_id" integer, "alerted_id" integer, "alerted_type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_acts_as_alertable_alert_alerteds_on_alert_id" ON "acts_as_alertable_alert_alerteds" ("alert_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905183938"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAlertableArticles (20180905211311)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "alertable_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905211311"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20180905211932)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905211932"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:39:52.023396"], ["updated_at", "2018-09-05 21:39:52.023396"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 1], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:39:52.045512"], ["updated_at", "2018-09-05 21:39:52.045512"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 1], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:39:52.048433"], ["updated_at", "2018-09-05 21:39:52.048433"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:39:52.054716"], ["updated_at", "2018-09-05 21:39:52.054716"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 1], ["alerted_id", 1], ["alerted_type", "User"], ["created_at", "2018-09-05 21:39:52.076522"], ["updated_at", "2018-09-05 21:39:52.076522"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 1], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 1], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 1], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:44:19.959773"], ["updated_at", "2018-09-05 21:44:19.959773"]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 2], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:44:19.983158"], ["updated_at", "2018-09-05 21:44:19.983158"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 2], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:44:19.986156"], ["updated_at", "2018-09-05 21:44:19.986156"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:44:19.991690"], ["updated_at", "2018-09-05 21:44:19.991690"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:44:19.994109"], ["updated_at", "2018-09-05 21:44:19.994109"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 3], ["alerted_id", 2], ["alerted_type", "User"], ["created_at", "2018-09-05 21:44:20.009102"], ["updated_at", "2018-09-05 21:44:20.009102"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20180905214520)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905214520"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:46:12.597321"], ["updated_at", "2018-09-05 21:46:12.597321"]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 3], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:46:12.619529"], ["updated_at", "2018-09-05 21:46:12.619529"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 3], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:46:12.622691"], ["updated_at", "2018-09-05 21:46:12.622691"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:46:12.631839"], ["updated_at", "2018-09-05 21:46:12.631839"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:46:12.634440"], ["updated_at", "2018-09-05 21:46:12.634440"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 5], ["alerted_id", 4], ["alerted_type", "User"], ["created_at", "2018-09-05 21:46:12.648448"], ["updated_at", "2018-09-05 21:46:12.648448"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:46:30.937243"], ["updated_at", "2018-09-05 21:46:30.937243"]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 4], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:46:30.962316"], ["updated_at", "2018-09-05 21:46:30.962316"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 4], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:46:30.964622"], ["updated_at", "2018-09-05 21:46:30.964622"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:46:30.972282"], ["updated_at", "2018-09-05 21:46:30.972282"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:46:30.974120"], ["updated_at", "2018-09-05 21:46:30.974120"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 7], ["alerted_id", 6], ["alerted_type", "User"], ["created_at", "2018-09-05 21:46:30.988933"], ["updated_at", "2018-09-05 21:46:30.988933"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-05 21:46:30.995598"], ["updated_at", "2018-09-05 21:46:30.995598"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCommentsUsers (20180905214715)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "comments_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment_id" integer, "user_id" integer) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_comments_users_on_comment_id" ON "comments_users" ("comment_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_users_on_comment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_users_on_comment_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_comments_users_on_user_id" ON "comments_users" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180905214715"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_acts_as_alertable_alert_alerteds_on_alert_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_users_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_users_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_users_on_comment_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_users_on_comment_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:47:49.172741"], ["updated_at", "2018-09-05 21:47:49.172741"]]
+  [1m[35m (7.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 5], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:47:49.197042"], ["updated_at", "2018-09-05 21:47:49.197042"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 5], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:47:49.200805"], ["updated_at", "2018-09-05 21:47:49.200805"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:47:49.212390"], ["updated_at", "2018-09-05 21:47:49.212390"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:47:49.215283"], ["updated_at", "2018-09-05 21:47:49.215283"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 9], ["alerted_id", 8], ["alerted_type", "User"], ["created_at", "2018-09-05 21:47:49.230634"], ["updated_at", "2018-09-05 21:47:49.230634"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-05 21:47:49.237073"], ["updated_at", "2018-09-05 21:47:49.237073"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 2], ["user_id", 8]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 2], ["user_id", 9]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:48:06.571964"], ["updated_at", "2018-09-05 21:48:06.571964"]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 6], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:48:06.594903"], ["updated_at", "2018-09-05 21:48:06.594903"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 6], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:48:06.597920"], ["updated_at", "2018-09-05 21:48:06.597920"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:48:06.605120"], ["updated_at", "2018-09-05 21:48:06.605120"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:48:06.607748"], ["updated_at", "2018-09-05 21:48:06.607748"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 11], ["alerted_id", 10], ["alerted_type", "User"], ["created_at", "2018-09-05 21:48:06.621300"], ["updated_at", "2018-09-05 21:48:06.621300"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-05 21:48:06.631485"], ["updated_at", "2018-09-05 21:48:06.631485"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 3], ["user_id", 10]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 3], ["user_id", 11]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 3], ["alertable_type", "Comment"], ["created_at", "2018-09-05 21:48:06.647080"], ["updated_at", "2018-09-05 21:48:06.647080"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 13], ["alerted_id", 11], ["alerted_type", "User"], ["created_at", "2018-09-05 21:48:06.650969"], ["updated_at", "2018-09-05 21:48:06.650969"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.2ms)[0m  SELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."name" FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 13], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 11], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 6], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 11], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:49:35.896076"], ["updated_at", "2018-09-05 21:49:35.896076"]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 7], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:49:35.921052"], ["updated_at", "2018-09-05 21:49:35.921052"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 7], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:49:35.924812"], ["updated_at", "2018-09-05 21:49:35.924812"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:49:35.932745"], ["updated_at", "2018-09-05 21:49:35.932745"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:49:35.935141"], ["updated_at", "2018-09-05 21:49:35.935141"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 14], ["alerted_id", 12], ["alerted_type", "User"], ["created_at", "2018-09-05 21:49:35.950750"], ["updated_at", "2018-09-05 21:49:35.950750"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-05 21:49:35.958429"], ["updated_at", "2018-09-05 21:49:35.958429"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 4], ["user_id", 12]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 4], ["user_id", 13]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 4], ["alertable_type", "Comment"], ["created_at", "2018-09-05 21:49:35.975902"], ["updated_at", "2018-09-05 21:49:35.975902"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 16], ["alerted_id", 13], ["alerted_type", "User"], ["created_at", "2018-09-05 21:49:35.979878"], ["updated_at", "2018-09-05 21:49:35.979878"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?  [["alertable_id", 7], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 14], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["alert_id", 14], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."name" FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 16], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #1"], ["created_at", "2018-09-05 21:49:56.345396"], ["updated_at", "2018-09-05 21:49:56.345396"]]
+  [1m[35m (6.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 8], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:49:56.369951"], ["updated_at", "2018-09-05 21:49:56.369951"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["alertable_id", 8], ["alertable_type", "AlertableArticle"], ["created_at", "2018-09-05 21:49:56.372474"], ["updated_at", "2018-09-05 21:49:56.372474"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-05 21:49:56.380815"], ["updated_at", "2018-09-05 21:49:56.380815"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-05 21:49:56.383821"], ["updated_at", "2018-09-05 21:49:56.383821"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 17], ["alerted_id", 14], ["alerted_type", "User"], ["created_at", "2018-09-05 21:49:56.400020"], ["updated_at", "2018-09-05 21:49:56.400020"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-05 21:49:56.408225"], ["updated_at", "2018-09-05 21:49:56.408225"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 5], ["user_id", 14]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 5], ["user_id", 15]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertable_id", "alertable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["alertable_id", 5], ["alertable_type", "Comment"], ["created_at", "2018-09-05 21:49:56.424208"], ["updated_at", "2018-09-05 21:49:56.424208"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 19], ["alerted_id", 15], ["alerted_type", "User"], ["created_at", "2018-09-05 21:49:56.428058"], ["updated_at", "2018-09-05 21:49:56.428058"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT  "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 17], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["alert_id", 17], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" WHERE "acts_as_alertable_alerts"."alertable_id" = ? AND "acts_as_alertable_alerts"."alertable_type" = ?[0m  [["alertable_id", 8], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."name" FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?[0m  [["comment_id", 5]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
