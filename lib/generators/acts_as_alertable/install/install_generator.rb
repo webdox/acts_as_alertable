@@ -5,7 +5,8 @@ module ActsAsAlertable
 	  def copy_alerts_migration
 	  	# copy_file "install.rb", "db/migrate/#{Time.now.strftime("%Y%m%d%H%M%S")}_create_acts_as_alertable_alerts.rb"
 	  	template "alerts_migration.rb", "db/migrate/#{Time.now.strftime("%Y%m%d%H%M%S")}_create_acts_as_alertable_alerts.rb"
-	  	template "alert_alerteds_migration.rb", "db/migrate/#{(Time.now + 1.second).strftime("%Y%m%d%H%M%S")}_create_acts_as_alertable_alert_alerteds.rb"
+	  	template "alert_alertables_migration.rb", "db/migrate/#{(Time.now + 1.second).strftime("%Y%m%d%H%M%S")}_create_acts_as_alertable_alert_alertables.rb"
+	  	template "alert_alerteds_migration.rb", "db/migrate/#{(Time.now + 2.second).strftime("%Y%m%d%H%M%S")}_create_acts_as_alertable_alert_alerteds.rb"
 	  end
 
 	  def migration_version

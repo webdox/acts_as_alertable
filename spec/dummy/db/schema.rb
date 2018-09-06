@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905214715) do
+ActiveRecord::Schema.define(version: 20180906154202) do
+
+  create_table "acts_as_alertable_alert_alertables", force: :cascade do |t|
+    t.integer  "alert_id"
+    t.integer  "alertable_id"
+    t.string   "alertable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "acts_as_alertable_alert_alertables", ["alert_id"], name: "index_acts_as_alertable_alert_alertables_on_alert_id"
 
   create_table "acts_as_alertable_alert_alerteds", force: :cascade do |t|
     t.integer  "alert_id"
@@ -24,14 +34,15 @@ ActiveRecord::Schema.define(version: 20180905214715) do
   add_index "acts_as_alertable_alert_alerteds", ["alert_id"], name: "index_acts_as_alertable_alert_alerteds_on_alert_id"
 
   create_table "acts_as_alertable_alerts", force: :cascade do |t|
-    t.integer  "alertable_id"
     t.string   "alertable_type"
     t.string   "name"
     t.string   "observable_date"
-    t.integer  "kind",            default: 0
-    t.string   "cron_format",     default: "0 0 1 * *"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "kind",                     default: 0
+    t.string   "cron_format",              default: "0 0 1 * *"
+    t.string   "alertables_custom_method"
+    t.text     "notifications"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "alertable_articles", force: :cascade do |t|
@@ -43,8 +54,9 @@ ActiveRecord::Schema.define(version: 20180905214715) do
   create_table "comments", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "release_date"
   end
 
   create_table "comments_users", force: :cascade do |t|
