@@ -7,11 +7,11 @@ module ActsAsAlertable
     serialize :notifications
 
     # edit this list on config/initializers/source_types.rb
-    ActsAsAlertable::SourceType.alerteds.each do |alerted_model|
+    ActsAsAlertable.configuration.alerteds.each do |alerted_model|
     	has_many alerted_model.pluralize.to_sym, :through => :alert_alerteds, :source => :alerted, :source_type => alerted_model.camelize
   	end
 
-  	ActsAsAlertable::SourceType.alertables.each do |alertable_model|
+  	ActsAsAlertable.configuration.alertables.each do |alertable_model|
     	has_many alertable_model.pluralize.to_sym, :through => :alert_alertables, :source => :alertable, :source_type => alertable_model.camelize
   	end
 

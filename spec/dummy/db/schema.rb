@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906154202) do
+ActiveRecord::Schema.define(version: 20180906185526) do
 
   create_table "acts_as_alertable_alert_alertables", force: :cascade do |t|
     t.integer  "alert_id"
