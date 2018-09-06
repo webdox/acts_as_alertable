@@ -10,5 +10,9 @@ module ActsAsAlertable
 		def alerteds_for(alert)
 			alert.users
 		end
+
+		def descriptive_name
+			"#{self.class.model_name.human} ##{self.id}"
+		end
 	end
 end

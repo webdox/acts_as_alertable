@@ -93,5 +93,31 @@ module ActsAsAlertable
 			notifications: notifications
 		}
 	end
+
+	def self.check!
+		self.check_for(Date.today)
+	end
+
+	def self.check_for date=Date.today
+		self.all.each{|alert| alert.check_for(date)}
+	end
+
+	def check_for date=Date.today
+		return unless trigger_dates.include?(date)
+		send_notifications(date)
+	end
+
+	def send_notifications date
+		ids = trigger_dates_object[date]
+		alertable_model.where(id: ids).each do |alertable|
+			alertable.alerteds_for(alert).each do |alerted|
+				alert.notify(alerted, alertable)
+			end
+		end
+	end
+
+	def notify alerted, alertable
+		ActsAsAlertable::AlertMailer.notify(alerted, alertable).deliver
+	end
   end
 end
