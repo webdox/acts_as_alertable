@@ -30,10 +30,19 @@ module ActsAsAlertable
 		alertable_type.constantize
 	end
 
-	def trigger_dates
+	def observable_dates
 		return alertables.pluck(observable).map(&:to_date).uniq if alertable_model.attribute_names.include?(observable)
 
 		alertables.map{|a| a.send(observable).to_date}.uniq
+	end
+
+	def trigger_dates
+		return [] if !notifications || kind != 'date_trigger'
+
+		result = observable_dates.map do |d|
+			notifications.map{|n| d + notification_value(n)}
+		end
+		result.flatten
 	end
 
 	def user_alerteds
@@ -44,14 +53,31 @@ module ActsAsAlertable
 		trigger_dates.map{|d|d.to_date}.include?(date.to_date)
 	end
 
-	def trigger_dates_object
+	def observable_dates_object
 		result = {}
 		alertables.each{|a| result[a.send(observable).to_date] = result[a.send(observable).to_date].to_a << a.id}
 		result
 	end
 
+	def trigger_dates_object
+		result = {}
+		return result if !notifications || kind != 'date_trigger'
+
+		alertables.each do |a|
+			notifications.each do |n|
+				date = a.send(observable).to_date + notification_value(n)
+				result[date] = result[date].to_a << a.id
+			end
+		end
+		result
+	end
+
 	def alerteds_object
 		alertables.map{|a| [a.id, a.alerteds_for(self)]}.to_h
+	end
+
+	def notification_value n
+		n[:value].try(n[:type])
 	end
 
 	def api_json
@@ -61,6 +87,7 @@ module ActsAsAlertable
 			observable: observable,
 			alertable_type: alertable_type,
 			alertables_custom_method: alertables_custom_method,
+			observable_dates: observable_dates_object,
 			trigger_dates: trigger_dates_object,
 			alerteds: alerteds_object,
 			notifications: notifications

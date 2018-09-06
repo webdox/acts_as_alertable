@@ -75,8 +75,8 @@ module ActsAsAlertable
 	end
 
 	context "default values" do
-		it "alert1 trigger_dates must be article1 and article3 created_at" do
-			@alert1.trigger_dates.sort.should eq([Date.today].sort)
+		it "alert1 observable_dates must be article1 and article3 created_at" do
+			@alert1.observable_dates.sort.should eq([Date.today].sort)
 		end
 
 		it "alert1 kind must be date_trigger" do
@@ -87,18 +87,18 @@ module ActsAsAlertable
 			@alert1.cron_format.should eq('0 0 1 * *')
 		end
 
-		it "comment_alert trigger_dates must be comment title" do
-			@comment_alert.trigger_dates.should eq([@comment.release_date])
+		it "comment_alert observable_dates must be comment title" do
+			@comment_alert.observable_dates.should eq([@comment.release_date])
 		end
 	end
 
 	context "methods" do
-		it "today must be a alert1 sendeable_date" do
-			@alert1.sendeable_date?(Time.now).should eq(true)
+		it "15 days ago must be a alert2 sendeable_date" do
+			@alert2.sendeable_date?(Time.now - 15.days).should eq(true)
 		end
 
-		it "tomorrow must NOT be a alert1 sendeable_date" do
-			@alert1.sendeable_date?(Time.now + 1.day).should eq(false)
+		it "in 30 days more must NOT be a alert2 sendeable_date" do
+			@alert2.sendeable_date?(Time.now + 30.days).should eq(false)
 		end
 
 		it "alert1 api_json" do
@@ -109,14 +109,40 @@ module ActsAsAlertable
 					observable: 'created_at',
 					alertable_type: 'AlertableArticle',
 					alertables_custom_method: nil,
-					trigger_dates: {
+					observable_dates: {
 						@article1.created_at.to_date => [@article1.id, @article3.id]
 					},
+					trigger_dates: {},
 					alerteds: {
 						@article1.id => @alert1.users,
 						@article3.id => @alert1.users,
 					},
 					notifications: nil
+				}
+			)
+		end
+
+		it "alert2 api_json" do
+			@alert2.api_json.should eq(
+				{
+					id: @alert2.id,
+					name: @alert2.name,
+					observable: 'created_at',
+					alertable_type: 'AlertableArticle',
+					alertables_custom_method: 'all',
+					observable_dates: {
+						@article1.created_at.to_date => [@article1.id, @article2.id, @article3.id]
+					},
+					trigger_dates: {
+						@article1.created_at.to_date - 15.days => [@article1.id, @article2.id, @article3.id],
+						@article1.created_at.to_date + 30.month => [@article1.id, @article2.id, @article3.id],
+					},
+					alerteds: {
+						@article1.id => @alert2.users,
+						@article2.id => @alert2.users,
+						@article3.id => @alert2.users
+					},
+					notifications: @notifications1
 				}
 			)
 		end
@@ -129,9 +155,10 @@ module ActsAsAlertable
 					observable: 'release_date',
 					alertable_type: 'Comment',
 					alertables_custom_method: nil,
-					trigger_dates: {
+					observable_dates: {
 						Date.new(2020,12,12) => [@comment.id]
 					},
+					trigger_dates: {},
 					alerteds: {
 						@comment.id => @comment.users,
 					},
@@ -140,9 +167,9 @@ module ActsAsAlertable
 			)
 		end
 
-		it "trigger_dates must be equal to api_json trigger_dates keys" do
-			@alert1.api_json[:trigger_dates].keys.sort.should eq(@alert1.trigger_dates)
-			@comment_alert.api_json[:trigger_dates].keys.sort.should eq(@comment_alert.trigger_dates)
+		it "observable_dates must be equal to api_json observable_dates keys" do
+			@alert1.api_json[:observable_dates].keys.sort.should eq(@alert1.observable_dates)
+			@comment_alert.api_json[:observable_dates].keys.sort.should eq(@comment_alert.observable_dates)
 		end
 	end
   end
