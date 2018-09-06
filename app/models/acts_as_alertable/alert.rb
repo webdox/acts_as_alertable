@@ -40,7 +40,7 @@ module ActsAsAlertable
 		return [] if !notifications || kind != 'date_trigger'
 
 		result = observable_dates.map do |d|
-			notifications.map{|n| d + notification_value(n)}
+			notifications.map{|n| (d + notification_value(n)).to_date}
 		end
 		result.flatten
 	end
@@ -65,7 +65,7 @@ module ActsAsAlertable
 
 		alertables.each do |a|
 			notifications.each do |n|
-				date = a.send(observable).to_date + notification_value(n)
+				date = (a.send(observable).to_date + notification_value(n)).to_date
 				result[date] = result[date].to_a << a.id
 			end
 		end
@@ -110,8 +110,8 @@ module ActsAsAlertable
 	def send_notifications date
 		ids = trigger_dates_object[date]
 		alertable_model.where(id: ids).each do |alertable|
-			alertable.alerteds_for(alert).each do |alerted|
-				alert.notify(alerted, alertable)
+			alertable.alerteds_for(self).each do |alerted|
+				self.notify(alerted, alertable)
 			end
 		end
 	end
