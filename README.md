@@ -23,7 +23,7 @@ After that you need to install the engine migrations and migrate your database
 
 ## Usage
 
-With this engine you have 2 modules to be included to your application models: 'ActsAsAlertable::Alertable' and `ActsAsAlertableAlerted`
+With this engine you have 2 modules to be included to your application models:
 
 #### ActsAsAlertable::Alertable
 This module allow you to indicate which application model will be under alert. Like:
