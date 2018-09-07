@@ -11,7 +11,7 @@ gem 'acts_as_alertable', git: git://github.com/webdox/acts_as_alertable
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -22,7 +22,25 @@ After that you need to install the engine migrations and migrate your database
 	$ rails generate acts_as_alertable:install && rake db:migrate
 
 ## Usage
-TODO
+
+With this engine you have 2 modules to be included to your application models: 'ActsAsAlertable::Alertable' and `ActsAsAlertableAlerted`
+
+#### ActsAsAlertable::Alertable
+This module allow you to indicate which application model will be under alert. Like:
+```
+class Article < ActiveRecord::Base
+	...
+	include ActsAsAlertable::Alertable
+	...
+end
+
+```
+In this case, the Article model now can have alerts:
+
+```
+article = Article.create!
+alert = article.alerts.create name: "Alert for my article"
+```
 
 
 ## Development
