@@ -7,12 +7,24 @@ module ActsAsAlertable
     serialize :notifications
 
     # edit this list on config/initializers/source_types.rb
-    ActsAsAlertable.configuration.alerteds.each do |alerted_model|
-    	has_many alerted_model.pluralize.to_sym, :through => :alert_alerteds, :source => :alerted, :source_type => alerted_model.camelize
+    def self.get_models
+    	ActiveRecord::Base.connection.tables.map{|m| m.camelize.singularize.constantize rescue nil} - [nil]
+    end
+
+    def self.alertable_models
+    	self.get_models.select{|m| m.included_modules.include?(ActsAsAlertable::Alertable)}
+    end
+
+    def self.alerteds_models
+    	self.get_models.select{|m| m.included_modules.include?(ActsAsAlertable::Alerted)}
+    end
+
+    self.alerteds_models.each do |alerted_model|
+    	has_many alerted_model.to_s.underscore.pluralize.to_sym, :through => :alert_alerteds, :source => :alerted, :source_type => alerted_model.to_s
   	end
 
-  	ActsAsAlertable.configuration.alertables.each do |alertable_model|
-    	has_many alertable_model.pluralize.to_sym, :through => :alert_alertables, :source => :alertable, :source_type => alertable_model.camelize
+  	self.alertable_models.each do |alertable_model|
+    	has_many alertable_model.to_s.underscore.pluralize.to_sym, :through => :alert_alertables, :source => :alertable, :source_type => alertable_model.to_s
   	end
 
   	enum kind: [:date_trigger, :simple_periodic, :advanced_periodic]
