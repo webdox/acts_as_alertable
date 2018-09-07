@@ -11,6 +11,7 @@ module ActsAsAlertable
 		@article3 = AlertableArticle.create! title: "Article #3"
 		@alert1 = @article1.alerts.create!
 		@alert2 = @article1.alerts.create! alertables_custom_method: :all
+		@alert3 = ActsAsAlertable::Alert.create cron_format: '0 0 * 8 *', kind: :simple_periodic
 
 		@user1 = User.create! name: 'User #1', email: "user1@alertable.com"
 		@user2 = User.create! name: 'User #2', email: "user2@alertable.com"
@@ -100,6 +101,12 @@ module ActsAsAlertable
 	end
 
 	context "methods" do
+		it "very day of August must be sendeable for alert3" do
+			@alert3.sendeable_date?(Date.new(2016,8,5)).should eq(true)
+			@alert3.sendeable_date?(Date.new(2017,8,31)).should eq(true)
+			@alert3.sendeable_date?(Date.new(2018,9,15)).should eq(false)
+		end
+
 		it "15 days ago must be a alert2 sendeable_date" do
 			@alert2.sendeable_date?(Time.now - 15.days).should eq(true)
 		end

@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.5.1"
   s.add_dependency "rspec-rails", "~> 2.14.1"
   s.add_dependency "letter_opener", "~> 1.4.1"
+  s.add_dependency "fugit", "~> 1.1.6"
   s.add_development_dependency "sqlite3"
 end

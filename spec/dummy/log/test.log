@@ -13285,3 +13285,1468 @@ Content-Transfer-Encoding: 7bit
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
   [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:49:53.938945"], ["updated_at", "2018-09-07 16:49:53.938945"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:49:53.945716"], ["updated_at", "2018-09-07 16:49:53.945716"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (2.1ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.3ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 45.9ms
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:49:54.001541"], ["updated_at", "2018-09-07 16:49:54.001541"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:49:54.003517"], ["updated_at", "2018-09-07 16:49:54.003517"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 40]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?[0m  [["id", 41]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 42]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 27]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 27]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 28]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 28]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #1"], ["created_at", "2018-09-07 16:49:54.042419"], ["updated_at", "2018-09-07 16:49:54.042419"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #2"], ["created_at", "2018-09-07 16:49:54.045540"], ["updated_at", "2018-09-07 16:49:54.045540"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #3"], ["created_at", "2018-09-07 16:49:54.047637"], ["updated_at", "2018-09-07 16:49:54.047637"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-07 16:49:54.060013"], ["updated_at", "2018-09-07 16:49:54.060013"]]
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 43], ["alertable_type", "AlertableArticle"], ["alert_id", 42], ["created_at", "2018-09-07 16:49:54.069679"], ["updated_at", "2018-09-07 16:49:54.069679"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 42]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertables_custom_method", "created_at", "updated_at") VALUES (?, ?, ?)  [["alertables_custom_method", "all"], ["created_at", "2018-09-07 16:49:54.079211"], ["updated_at", "2018-09-07 16:49:54.079211"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 43], ["alertable_type", "AlertableArticle"], ["alert_id", 43], ["created_at", "2018-09-07 16:49:54.081187"], ["updated_at", "2018-09-07 16:49:54.081187"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 43]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-07 16:49:54.084355"], ["updated_at", "2018-09-07 16:49:54.084355"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-07 16:49:54.087274"], ["updated_at", "2018-09-07 16:49:54.087274"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Comment #1"], ["release_date", "2020-12-12"], ["created_at", "2018-09-07 16:49:54.092373"], ["updated_at", "2018-09-07 16:49:54.092373"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 45], ["alertable_type", "AlertableArticle"], ["alert_id", 42], ["created_at", "2018-09-07 16:49:54.096728"], ["updated_at", "2018-09-07 16:49:54.096728"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 44], ["alertable_type", "AlertableArticle"], ["alert_id", 43], ["created_at", "2018-09-07 16:49:54.100831"], ["updated_at", "2018-09-07 16:49:54.100831"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 42], ["alerted_id", 29], ["alerted_type", "User"], ["created_at", "2018-09-07 16:49:54.114314"], ["updated_at", "2018-09-07 16:49:54.114314"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 15], ["user_id", 29]]
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 15], ["user_id", 30]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("observable_date", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["observable_date", "release_date"], ["created_at", "2018-09-07 16:49:54.131089"], ["updated_at", "2018-09-07 16:49:54.131089"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 15], ["alertable_type", "Comment"], ["alert_id", 44], ["created_at", "2018-09-07 16:49:54.133073"], ["updated_at", "2018-09-07 16:49:54.133073"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'Comment' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 44]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 44], ["alerted_id", 30], ["alerted_type", "User"], ["created_at", "2018-09-07 16:49:54.137284"], ["updated_at", "2018-09-07 16:49:54.137284"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "notifications" = ?, "updated_at" = ? WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["notifications", "---\n- :type: seconds\n  :value: 30\n- :type: days\n  :value: -15\n- :type: month\n  :value: 30\n"], ["updated_at", "2018-09-07 16:49:54.141591"], ["id", 43]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 43], ["alerted_id", 30], ["alerted_type", "User"], ["created_at", "2018-09-07 16:49:54.146600"], ["updated_at", "2018-09-07 16:49:54.146600"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mActsAsAlertable::Alert Load (0.3ms)[0m  [1mSELECT  "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  ORDER BY "acts_as_alertable_alerts"."id" ASC LIMIT 1[0m  [["alertable_id", 44], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alertable_id", 43], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 42], ["alertable_type", "AlertableArticle"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 42], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 44], ["alertable_type", "Comment"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?  [["comment_id", 15]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 42], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 42], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 44], ["alertable_type", "Comment"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?  [["comment_id", 15]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mActsAsAlertable::Alert Load (0.7ms)[0m  [1mSELECT "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.2ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 22], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 25], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 28], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 31], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 34], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 37], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 40], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (43, 44, 45)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 43], ["alerted_type", "User"]]
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+
+Sent mail to user2@alertable.com (4.8ms)
+Date: Fri, 07 Sep 2018 13:49:54 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac3232303_796c3fd1cc84198468a0@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #43
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac3231ddc_796c3fd1cc84198467b0";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac3231ddc_796c3fd1cc84198467b0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac3231ddc_796c3fd1cc84198467b0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac3231ddc_796c3fd1cc84198467b0--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.8ms
+
+Sent mail to user2@alertable.com (2.4ms)
+Date: Fri, 07 Sep 2018 13:49:54 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac3233f00_796c3fd1cc8419847084@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #44
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac323395e_796c3fd1cc84198469a2";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac323395e_796c3fd1cc84198469a2
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac323395e_796c3fd1cc84198469a2
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac323395e_796c3fd1cc84198469a2--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.4ms
+
+Sent mail to user2@alertable.com (2.4ms)
+Date: Fri, 07 Sep 2018 13:49:54 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac3234f1b_796c3fd1cc84198472ef@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #45
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac3234a88_796c3fd1cc84198471c2";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac3234a88_796c3fd1cc84198471c2
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac3234a88_796c3fd1cc84198471c2
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac3234a88_796c3fd1cc84198471c2--
+
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 42], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 44], ["alertable_type", "Comment"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:50:21.345734"], ["updated_at", "2018-09-07 16:50:21.345734"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:50:21.352278"], ["updated_at", "2018-09-07 16:50:21.352278"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (1.5ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.3ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 47.1ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:50:21.408559"], ["updated_at", "2018-09-07 16:50:21.408559"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:50:21.409998"], ["updated_at", "2018-09-07 16:50:21.409998"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.6ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 43]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?[0m  [["id", 44]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 45]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 29]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 29]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 30]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 30]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #1"], ["created_at", "2018-09-07 16:50:21.446810"], ["updated_at", "2018-09-07 16:50:21.446810"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #2"], ["created_at", "2018-09-07 16:50:21.450438"], ["updated_at", "2018-09-07 16:50:21.450438"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #3"], ["created_at", "2018-09-07 16:50:21.453280"], ["updated_at", "2018-09-07 16:50:21.453280"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-07 16:50:21.465957"], ["updated_at", "2018-09-07 16:50:21.465957"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 46], ["alertable_type", "AlertableArticle"], ["alert_id", 45], ["created_at", "2018-09-07 16:50:21.471815"], ["updated_at", "2018-09-07 16:50:21.471815"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 45]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertables_custom_method", "created_at", "updated_at") VALUES (?, ?, ?)  [["alertables_custom_method", "all"], ["created_at", "2018-09-07 16:50:21.478766"], ["updated_at", "2018-09-07 16:50:21.478766"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 46], ["alertable_type", "AlertableArticle"], ["alert_id", 46], ["created_at", "2018-09-07 16:50:21.480049"], ["updated_at", "2018-09-07 16:50:21.480049"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 46]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-07 16:50:21.481864"], ["updated_at", "2018-09-07 16:50:21.481864"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-07 16:50:21.484292"], ["updated_at", "2018-09-07 16:50:21.484292"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "comments" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Comment #1"], ["release_date", "2020-12-12"], ["created_at", "2018-09-07 16:50:21.488544"], ["updated_at", "2018-09-07 16:50:21.488544"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 48], ["alertable_type", "AlertableArticle"], ["alert_id", 45], ["created_at", "2018-09-07 16:50:21.492450"], ["updated_at", "2018-09-07 16:50:21.492450"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 47], ["alertable_type", "AlertableArticle"], ["alert_id", 46], ["created_at", "2018-09-07 16:50:21.496172"], ["updated_at", "2018-09-07 16:50:21.496172"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 45], ["alerted_id", 31], ["alerted_type", "User"], ["created_at", "2018-09-07 16:50:21.508745"], ["updated_at", "2018-09-07 16:50:21.508745"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 16], ["user_id", 31]]
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 16], ["user_id", 32]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("observable_date", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["observable_date", "release_date"], ["created_at", "2018-09-07 16:50:21.522356"], ["updated_at", "2018-09-07 16:50:21.522356"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 16], ["alertable_type", "Comment"], ["alert_id", 47], ["created_at", "2018-09-07 16:50:21.523757"], ["updated_at", "2018-09-07 16:50:21.523757"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'Comment' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 47]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 47], ["alerted_id", 32], ["alerted_type", "User"], ["created_at", "2018-09-07 16:50:21.526911"], ["updated_at", "2018-09-07 16:50:21.526911"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "notifications" = ?, "updated_at" = ? WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["notifications", "---\n- :type: seconds\n  :value: 30\n- :type: days\n  :value: -15\n- :type: month\n  :value: 30\n"], ["updated_at", "2018-09-07 16:50:21.531027"], ["id", 46]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alert_id", 46], ["alerted_id", 32], ["alerted_type", "User"], ["created_at", "2018-09-07 16:50:21.535727"], ["updated_at", "2018-09-07 16:50:21.535727"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 45], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mActsAsAlertable::Alert Load (0.3ms)[0m  SELECT "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 22], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 25], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 28], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 31], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 34], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 37], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 40], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 43], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.2ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (46, 47, 48)[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 46], ["alerted_type", "User"]]
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+
+Sent mail to user2@alertable.com (5.4ms)
+Date: Fri, 07 Sep 2018 13:50:21 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac4d8d754_79893ffc36c3f9841511f@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #46
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac4d8d1fa_79893ffc36c3f98415034";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac4d8d1fa_79893ffc36c3f98415034
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac4d8d1fa_79893ffc36c3f98415034
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac4d8d1fa_79893ffc36c3f98415034--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 2.2ms
+
+Sent mail to user2@alertable.com (2.5ms)
+Date: Fri, 07 Sep 2018 13:50:21 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac4d8f7b9_79893ffc36c3f984153f9@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #47
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac4d8f12a_79893ffc36c3f984152bc";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac4d8f12a_79893ffc36c3f984152bc
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac4d8f12a_79893ffc36c3f984152bc
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac4d8f12a_79893ffc36c3f984152bc--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+
+Sent mail to user2@alertable.com (2.7ms)
+Date: Fri, 07 Sep 2018 13:50:21 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ac4d909d8_79893ffc36c3f984155c9@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #48
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ac4d90413_79893ffc36c3f984154a8";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ac4d90413_79893ffc36c3f984154a8
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ac4d90413_79893ffc36c3f984154a8
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ac4d90413_79893ffc36c3f984154a8--
+
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 47], ["alertable_type", "Comment"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?  [["comment_id", 16]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?[0m  [["comment_id", 16]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 45], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.1ms)[0m  SELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 47], ["alertable_type", "Comment"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alertable_id", 46], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 45], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 45], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mActsAsAlertable::Alert Load (0.2ms)[0m  SELECT  "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  ORDER BY "acts_as_alertable_alerts"."id" ASC LIMIT 1  [["alertable_id", 47], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 47], ["alertable_type", "Comment"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 45], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:52:51.865142"], ["updated_at", "2018-09-07 16:52:51.865142"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:52:51.870743"], ["updated_at", "2018-09-07 16:52:51.870743"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (1.6ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.3ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 42.2ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:52:51.921828"], ["updated_at", "2018-09-07 16:52:51.921828"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:52:51.923112"], ["updated_at", "2018-09-07 16:52:51.923112"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 46]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?[0m  [["id", 47]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 48]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 31]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 31]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 32]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 32]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #1"], ["created_at", "2018-09-07 16:52:51.959374"], ["updated_at", "2018-09-07 16:52:51.959374"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #2"], ["created_at", "2018-09-07 16:52:51.962415"], ["updated_at", "2018-09-07 16:52:51.962415"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #3"], ["created_at", "2018-09-07 16:52:51.964965"], ["updated_at", "2018-09-07 16:52:51.964965"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-07 16:52:51.977550"], ["updated_at", "2018-09-07 16:52:51.977550"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 49], ["alertable_type", "AlertableArticle"], ["alert_id", 48], ["created_at", "2018-09-07 16:52:51.984108"], ["updated_at", "2018-09-07 16:52:51.984108"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 48]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertables_custom_method", "created_at", "updated_at") VALUES (?, ?, ?)  [["alertables_custom_method", "all"], ["created_at", "2018-09-07 16:52:51.990551"], ["updated_at", "2018-09-07 16:52:51.990551"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 49], ["alertable_type", "AlertableArticle"], ["alert_id", 49], ["created_at", "2018-09-07 16:52:51.991946"], ["updated_at", "2018-09-07 16:52:51.991946"]]
+  [1m[35mSQL (0.0ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 49]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("cron_format", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["cron_format", "0 0 * 8 *"], ["created_at", "2018-09-07 16:52:51.994340"], ["updated_at", "2018-09-07 16:52:51.994340"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-07 16:52:51.996978"], ["updated_at", "2018-09-07 16:52:51.996978"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-07 16:52:51.999082"], ["updated_at", "2018-09-07 16:52:51.999082"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Comment #1"], ["release_date", "2020-12-12"], ["created_at", "2018-09-07 16:52:52.003683"], ["updated_at", "2018-09-07 16:52:52.003683"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 51], ["alertable_type", "AlertableArticle"], ["alert_id", 48], ["created_at", "2018-09-07 16:52:52.006593"], ["updated_at", "2018-09-07 16:52:52.006593"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 50], ["alertable_type", "AlertableArticle"], ["alert_id", 49], ["created_at", "2018-09-07 16:52:52.009873"], ["updated_at", "2018-09-07 16:52:52.009873"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 48], ["alerted_id", 33], ["alerted_type", "User"], ["created_at", "2018-09-07 16:52:52.020063"], ["updated_at", "2018-09-07 16:52:52.020063"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 17], ["user_id", 33]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 17], ["user_id", 34]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("observable_date", "created_at", "updated_at") VALUES (?, ?, ?)  [["observable_date", "release_date"], ["created_at", "2018-09-07 16:52:52.032034"], ["updated_at", "2018-09-07 16:52:52.032034"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 17], ["alertable_type", "Comment"], ["alert_id", 51], ["created_at", "2018-09-07 16:52:52.033644"], ["updated_at", "2018-09-07 16:52:52.033644"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'Comment' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 51]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 51], ["alerted_id", 34], ["alerted_type", "User"], ["created_at", "2018-09-07 16:52:52.037473"], ["updated_at", "2018-09-07 16:52:52.037473"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "acts_as_alertable_alerts" SET "notifications" = ?, "updated_at" = ? WHERE "acts_as_alertable_alerts"."id" = ?  [["notifications", "---\n- :type: seconds\n  :value: 30\n- :type: days\n  :value: -15\n- :type: month\n  :value: 30\n"], ["updated_at", "2018-09-07 16:52:52.040699"], ["id", 49]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 49], ["alerted_id", 34], ["alerted_type", "User"], ["created_at", "2018-09-07 16:52:52.046712"], ["updated_at", "2018-09-07 16:52:52.046712"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 48], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 48], ["alertable_type", "AlertableArticle"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 48], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alertable_id", 49], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 51], ["alertable_type", "Comment"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?[0m  [["comment_id", 17]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mActsAsAlertable::Alert Load (0.2ms)[0m  SELECT  "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  ORDER BY "acts_as_alertable_alerts"."id" ASC LIMIT 1  [["alertable_id", 50], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 48], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 51], ["alertable_type", "Comment"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 48], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 51], ["alertable_type", "Comment"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mActsAsAlertable::Alert Load (0.3ms)[0m  SELECT "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 22], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 25], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 28], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 31], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 34], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 37], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 40], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 43], ["alerted_type", "User"]]
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 46], ["alerted_type", "User"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (49, 50, 51)[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?  [["alert_id", 49], ["alerted_type", "User"]]
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+
+Sent mail to user2@alertable.com (4.4ms)
+Date: Fri, 07 Sep 2018 13:52:52 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ace41c29c_79c03fea3c03f974170af@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #49
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ace41bd56_79c03fea3c03f9741693c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ace41bd56_79c03fea3c03f9741693c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ace41bd56_79c03fea3c03f9741693c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ace41bd56_79c03fea3c03f9741693c--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.5ms
+
+Sent mail to user2@alertable.com (2.2ms)
+Date: Fri, 07 Sep 2018 13:52:52 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ace41db0a_79c03fea3c03f97417261@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #50
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ace41d671_79c03fea3c03f97417168";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ace41d671_79c03fea3c03f97417168
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ace41d671_79c03fea3c03f97417168
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ace41d671_79c03fea3c03f97417168--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.6ms
+
+Sent mail to user2@alertable.com (2.2ms)
+Date: Fri, 07 Sep 2018 13:52:52 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ace41ebc5_79c03fea3c03f97417430@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #51
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ace41e64e_79c03fea3c03f97417319";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ace41e64e_79c03fea3c03f97417319
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ace41e64e_79c03fea3c03f97417319
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ace41e64e_79c03fea3c03f97417319--
+
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?[0m  [["comment_id", 17]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:53:30.629398"], ["updated_at", "2018-09-07 16:53:30.629398"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:53:30.635568"], ["updated_at", "2018-09-07 16:53:30.635568"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (1.4ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.3ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 42.7ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "created_at", "updated_at") VALUES (?, ?, ?)  [["email", "test@user.com"], ["created_at", "2018-09-07 16:53:30.687352"], ["updated_at", "2018-09-07 16:53:30.687352"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article1"], ["created_at", "2018-09-07 16:53:30.688651"], ["updated_at", "2018-09-07 16:53:30.688651"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.6ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35mAlertableArticle Load (0.2ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 49]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?[0m  [["id", 50]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "alertable_articles" WHERE "alertable_articles"."id" = ?  [["id", 51]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 33]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 33]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "comments_users" WHERE "comments_users"."user_id" = ?  [["user_id", 34]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 34]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #1"], ["created_at", "2018-09-07 16:53:30.723064"], ["updated_at", "2018-09-07 16:53:30.723064"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Article #2"], ["created_at", "2018-09-07 16:53:30.725258"], ["updated_at", "2018-09-07 16:53:30.725258"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "alertable_articles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "Article #3"], ["created_at", "2018-09-07 16:53:30.727722"], ["updated_at", "2018-09-07 16:53:30.727722"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-09-07 16:53:30.741744"], ["updated_at", "2018-09-07 16:53:30.741744"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 52], ["alertable_type", "AlertableArticle"], ["alert_id", 52], ["created_at", "2018-09-07 16:53:30.750635"], ["updated_at", "2018-09-07 16:53:30.750635"]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?[0m  [["id", 52]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("alertables_custom_method", "created_at", "updated_at") VALUES (?, ?, ?)  [["alertables_custom_method", "all"], ["created_at", "2018-09-07 16:53:30.758563"], ["updated_at", "2018-09-07 16:53:30.758563"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 52], ["alertable_type", "AlertableArticle"], ["alert_id", 53], ["created_at", "2018-09-07 16:53:30.760327"], ["updated_at", "2018-09-07 16:53:30.760327"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'AlertableArticle' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 53]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alerts" ("cron_format", "kind", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["cron_format", "0 0 * 8 *"], ["kind", 1], ["created_at", "2018-09-07 16:53:30.762975"], ["updated_at", "2018-09-07 16:53:30.762975"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "User #1"], ["email", "user1@alertable.com"], ["created_at", "2018-09-07 16:53:30.765421"], ["updated_at", "2018-09-07 16:53:30.765421"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "User #2"], ["email", "user2@alertable.com"], ["created_at", "2018-09-07 16:53:30.768333"], ["updated_at", "2018-09-07 16:53:30.768333"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "comments" ("title", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Comment #1"], ["release_date", "2020-12-12"], ["created_at", "2018-09-07 16:53:30.774050"], ["updated_at", "2018-09-07 16:53:30.774050"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 54], ["alertable_type", "AlertableArticle"], ["alert_id", 52], ["created_at", "2018-09-07 16:53:30.777646"], ["updated_at", "2018-09-07 16:53:30.777646"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["alertable_id", 53], ["alertable_type", "AlertableArticle"], ["alert_id", 53], ["created_at", "2018-09-07 16:53:30.780515"], ["updated_at", "2018-09-07 16:53:30.780515"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 52], ["alerted_id", 35], ["alerted_type", "User"], ["created_at", "2018-09-07 16:53:30.791568"], ["updated_at", "2018-09-07 16:53:30.791568"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)  [["comment_id", 18], ["user_id", 35]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "comments_users" ("comment_id", "user_id") VALUES (?, ?)[0m  [["comment_id", 18], ["user_id", 36]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "acts_as_alertable_alerts" ("observable_date", "created_at", "updated_at") VALUES (?, ?, ?)  [["observable_date", "release_date"], ["created_at", "2018-09-07 16:53:30.804810"], ["updated_at", "2018-09-07 16:53:30.804810"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alertables" ("alertable_id", "alertable_type", "alert_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alertable_id", 18], ["alertable_type", "Comment"], ["alert_id", 55], ["created_at", "2018-09-07 16:53:30.806314"], ["updated_at", "2018-09-07 16:53:30.806314"]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "acts_as_alertable_alerts" SET "alertable_type" = 'Comment' WHERE "acts_as_alertable_alerts"."id" = ?  [["id", 55]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 55], ["alerted_id", 36], ["alerted_type", "User"], ["created_at", "2018-09-07 16:53:30.810304"], ["updated_at", "2018-09-07 16:53:30.810304"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "acts_as_alertable_alerts" SET "notifications" = ?, "updated_at" = ? WHERE "acts_as_alertable_alerts"."id" = ?  [["notifications", "---\n- :type: seconds\n  :value: 30\n- :type: days\n  :value: -15\n- :type: month\n  :value: 30\n"], ["updated_at", "2018-09-07 16:53:30.813942"], ["id", 53]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "acts_as_alertable_alert_alerteds" ("alert_id", "alerted_id", "alerted_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["alert_id", 53], ["alerted_id", 36], ["alerted_type", "User"], ["created_at", "2018-09-07 16:53:30.819328"], ["updated_at", "2018-09-07 16:53:30.819328"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 55], ["alertable_type", "Comment"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?[0m  [["comment_id", 18]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "comments_users" ON "users"."id" = "comments_users"."user_id" WHERE "comments_users"."comment_id" = ?  [["comment_id", 18]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mActsAsAlertable::Alert Load (0.4ms)[0m  [1mSELECT "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.2ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 22], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 25], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 28], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.5ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 31], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.2ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 34], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 37], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 40], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 43], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 46], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 49], ["alerted_type", "User"]]
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."created_at" FROM "alertable_articles"
+  [1m[36mAlertableArticle Load (0.1ms)[0m  [1mSELECT "alertable_articles".* FROM "alertable_articles"[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" WHERE "alertable_articles"."id" IN (52, 53, 54)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 53], ["alerted_type", "User"]]
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.8ms
+
+Sent mail to user2@alertable.com (4.7ms)
+Date: Fri, 07 Sep 2018 13:53:30 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ad0ad5b7e_79d43ffb6c4319745222@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #52
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ad0ad55dd_79d43ffb6c4319745145";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ad0ad55dd_79d43ffb6c4319745145
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ad0ad55dd_79d43ffb6c4319745145
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ad0ad55dd_79d43ffb6c4319745145--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.7ms
+
+Sent mail to user2@alertable.com (2.1ms)
+Date: Fri, 07 Sep 2018 13:53:30 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ad0ad7660_79d43ffb6c4319745425@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #53
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ad0ad7113_79d43ffb6c43197453df";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ad0ad7113_79d43ffb6c43197453df
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ad0ad7113_79d43ffb6c43197453df
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ad0ad7113_79d43ffb6c43197453df--
+
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.html.erb within layouts/mailer (0.0ms)
+  Rendered /Users/joaquinnunez/WebDevelopment/acts_as_alertable/app/views/acts_as_alertable/alert_mailer/notify.text.erb within layouts/mailer (0.0ms)
+
+ActsAsAlertable::AlertMailer#notify: processed outbound mail in 1.4ms
+
+Sent mail to user2@alertable.com (2.0ms)
+Date: Fri, 07 Sep 2018 13:53:30 -0300
+From: from@example.com
+To: user2@alertable.com
+Message-ID: <5b92ad0ad84dc_79d43ffb6c4319745626@MacBook-Pro-de-Joaquin.local.mail>
+Subject: [ActsAsAlertable] Alertable article #54
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b92ad0ad8044_79d43ffb6c43197455df";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b92ad0ad8044_79d43ffb6c43197455df
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+AlertMailer#notify
+
+User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.text.erb
+
+
+----==_mimepart_5b92ad0ad8044_79d43ffb6c43197455df
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>AlertMailer#notify</h1>
+
+<p>
+  User #2, rewrite me in app/views/acts_as_alertable/alert_mailer/notify.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5b92ad0ad8044_79d43ffb6c43197455df--
+
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mAlertableArticle Load (0.1ms)[0m  SELECT "alertable_articles".* FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 52], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 52], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.1ms)[0m  SELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 55], ["alertable_type", "Comment"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mActsAsAlertable::Alert Load (0.2ms)[0m  SELECT  "acts_as_alertable_alerts".* FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  ORDER BY "acts_as_alertable_alerts"."id" ASC LIMIT 1  [["alertable_id", 53], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."title" FROM "alertable_articles"[0m
+  [1m[35m (0.0ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles"
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "acts_as_alertable_alert_alerteds" ON "users"."id" = "acts_as_alertable_alert_alerteds"."alerted_id" WHERE "acts_as_alertable_alert_alerteds"."alert_id" = ? AND "acts_as_alertable_alert_alerteds"."alerted_type" = ?[0m  [["alert_id", 52], ["alerted_type", "User"]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "alertable_articles"."title" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 52], ["alertable_type", "AlertableArticle"]]
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "acts_as_alertable_alerts" INNER JOIN "acts_as_alertable_alert_alertables" ON "acts_as_alertable_alerts"."id" = "acts_as_alertable_alert_alertables"."alert_id" WHERE "acts_as_alertable_alert_alertables"."alertable_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alertable_id", 52], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "comments"."release_date" FROM "comments" INNER JOIN "acts_as_alertable_alert_alertables" ON "comments"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?  [["alert_id", 55], ["alertable_type", "Comment"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "alertable_articles"."created_at" FROM "alertable_articles" INNER JOIN "acts_as_alertable_alert_alertables" ON "alertable_articles"."id" = "acts_as_alertable_alert_alertables"."alertable_id" WHERE "acts_as_alertable_alert_alertables"."alert_id" = ? AND "acts_as_alertable_alert_alertables"."alertable_type" = ?[0m  [["alert_id", 52], ["alertable_type", "AlertableArticle"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction

@@ -62,7 +62,12 @@ module ActsAsAlertable
 	end
 
 	def sendeable_date? date
-		trigger_dates.map{|d|d.to_date}.include?(date.to_date)
+		trigger_dates.map{|d|d.to_date}.include?(date.to_date) ||
+		(kind == "simple_periodic" && cron_match?(date))
+	end
+
+	def cron_match? date
+		ActsAsAlertable::CronFormat.date_match?(cron_format, date)
 	end
 
 	def observable_dates_object
