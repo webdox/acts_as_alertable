@@ -115,7 +115,7 @@ module ActsAsAlertable
 	end
 
 	def check_for date=Date.today
-		return unless trigger_dates.include?(date)
+		return unless sendeable_date?(date)
 		send_notifications(date)
 	end
 

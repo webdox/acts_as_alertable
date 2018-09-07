@@ -4,6 +4,8 @@ module ActsAsAlertable
   describe Alert do
 	before :all do
 		AlertableArticle.destroy_all
+		User.destroy_all
+
 		@article1 = AlertableArticle.create! title: "Article #1"
 		@article2 = AlertableArticle.create! title: "Article #2"
 		@article3 = AlertableArticle.create! title: "Article #3"
@@ -25,6 +27,10 @@ module ActsAsAlertable
 
 		@notifications1 = [
 			{
+				type: 'seconds',
+				value: 30
+			},
+			{
 				type: 'days',
 				value: -15
 			},
@@ -35,6 +41,7 @@ module ActsAsAlertable
 		]
 
 		@alert2.update notifications: @notifications1
+		@alert2.users << @user2
 	end
 
 	context "relations" do
@@ -136,6 +143,7 @@ module ActsAsAlertable
 					trigger_dates: {
 						@article1.created_at.to_date - 15.days => [@article1.id, @article2.id, @article3.id],
 						@article1.created_at.to_date + 30.month => [@article1.id, @article2.id, @article3.id],
+						@article1.created_at.to_date => [@article1.id, @article2.id, @article3.id],
 					},
 					alerteds: {
 						@article1.id => @alert2.users,
@@ -171,6 +179,10 @@ module ActsAsAlertable
 			@alert1.api_json[:observable_dates].keys.sort.should eq(@alert1.observable_dates)
 			@comment_alert.api_json[:observable_dates].keys.sort.should eq(@comment_alert.observable_dates)
 		end
+
+		it "sends a notification email" do
+        	expect { Alert.check! }.to change { ActionMailer::Base.deliveries.count }.by(3)
+      	end
 	end
   end
 end
