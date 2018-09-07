@@ -5,7 +5,7 @@ This engine will help you to have a flexible alert module for you rails applicat
 
 Add this line to your application's Gemfile:
 
-```ruby
+```
 gem 'acts_as_alertable', git: git://github.com/webdox/acts_as_alertable
 ```
 
