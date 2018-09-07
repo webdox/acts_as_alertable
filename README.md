@@ -130,7 +130,7 @@ article.created_at # => Fri, 07 Sep 2018 18:23:55 UTC +00:00
 alert.observable_dates # => [Fri, 07 Sep 2018]
 ```
 
-~note: The alert could be alerting many alertable objects, that's why the `observable_dates` returns an array of dates.~
+_note: The alert could be alerting many alertable objects, that's why the `observable_dates` returns an array of dates._
 
 ## Trigger Notification and more
 
