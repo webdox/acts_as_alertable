@@ -120,6 +120,7 @@ module ActsAsAlertable
 				{
 					id: @alert1.id,
 					name: @alert1.name,
+					created_at: @alert1.created_at,
 					kind: @alert1.kind,
 					cron_format: @alert1.cron_format,
 					observable_date: 'created_at',
@@ -143,6 +144,7 @@ module ActsAsAlertable
 				{
 					id: @alert2.id,
 					name: @alert2.name,
+					created_at: @alert2.created_at,
 					kind: @alert2.kind,
 					cron_format: @alert2.cron_format,
 					observable_date: 'created_at',
@@ -171,6 +173,7 @@ module ActsAsAlertable
 				{
 					id: @comment_alert.id,
 					name: @comment_alert.name,
+					created_at: @comment_alert.created_at,
 					kind: @comment_alert.kind,
 					cron_format: @comment_alert.cron_format,
 					observable_date: 'release_date',

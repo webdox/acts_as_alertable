@@ -101,6 +101,7 @@ module ActsAsAlertable
 		{
 			id: id,
 			name: name,
+			created_at: created_at,
 			kind: kind,
 			cron_format: cron_format,
 			observable_date: observable,
