@@ -102,6 +102,7 @@ module ActsAsAlertable
 			id: id,
 			name: name,
 			kind: kind,
+			cron_format: cron_format,
 			observable_date: observable,
 			alertable_type: alertable_type,
 			alertables_custom_method: alertables_custom_method,
