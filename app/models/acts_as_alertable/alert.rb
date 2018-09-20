@@ -72,7 +72,11 @@ module ActsAsAlertable
 
 	def observable_dates_object
 		result = {}
-		alertables.each{|a| result[a.send(observable).to_date] = result[a.send(observable).to_date].to_a << a.id}
+		alertables.each do |a|
+			_date = a.send(observable).try(:to_date)
+			next unless _date
+			result[_date] = result[_date].to_a << a.id
+		end
 		result
 	end
 
@@ -82,7 +86,9 @@ module ActsAsAlertable
 
 		alertables.each do |a|
 			notifications.each do |n|
-				date = (a.send(observable).to_date + notification_value(n)).to_date
+				_date = a.send(observable).try(:to_date)
+				next unless _date
+				date = (_date + notification_value(n)).to_date
 				result[date] = result[date].to_a << a.id
 			end
 		end
