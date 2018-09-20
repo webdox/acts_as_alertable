@@ -120,6 +120,7 @@ module ActsAsAlertable
 				{
 					id: @alert1.id,
 					name: @alert1.name,
+					kind: @alert1.kind,
 					observable: 'created_at',
 					alertable_type: 'AlertableArticle',
 					alertables_custom_method: nil,
@@ -141,6 +142,7 @@ module ActsAsAlertable
 				{
 					id: @alert2.id,
 					name: @alert2.name,
+					kind: @alert2.kind,
 					observable: 'created_at',
 					alertable_type: 'AlertableArticle',
 					alertables_custom_method: 'all',
@@ -167,6 +169,7 @@ module ActsAsAlertable
 				{
 					id: @comment_alert.id,
 					name: @comment_alert.name,
+					kind: @comment_alert.kind,
 					observable: 'release_date',
 					alertable_type: 'Comment',
 					alertables_custom_method: nil,
