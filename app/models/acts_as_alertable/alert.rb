@@ -35,7 +35,7 @@ module ActsAsAlertable
 	end
 
 	def alertables
-		alertable_model.send(alertables_custom_method) rescue self.send(alertable_type.underscore.pluralize)
+		alertable_model.send(alertables_custom_method) rescue self.send(alertable_type.underscore.pluralize).map{|a| a.send(alertables_custom_method)}.flatten rescue self.send(alertable_type.underscore.pluralize)
 	end
 
 	def alertable_model
