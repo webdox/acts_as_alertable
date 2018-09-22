@@ -135,7 +135,7 @@ module ActsAsAlertable
 
 	def send_notifications date
 		ids = trigger_dates_object[date]
-		alertables.where(id: ids).each do |alertable|
+		alertables.select{|e| ids.include?(e.id)}.each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
 				self.notify(alerted, alertable)
 			end
