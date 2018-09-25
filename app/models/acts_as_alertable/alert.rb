@@ -135,6 +135,7 @@ module ActsAsAlertable
 
 	def send_notifications date
 		ids = trigger_dates_object[date]
+		ids = alertables.map{|a| a.id } if kind == 'simple_periodic'
 		alertables.select{|e| ids.include?(e.id)}.each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
 				self.notify(alerted, alertable)
