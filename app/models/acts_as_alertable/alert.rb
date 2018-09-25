@@ -28,6 +28,7 @@ module ActsAsAlertable
   	end
 
   	enum kind: [:date_trigger, :simple_periodic, :advanced_periodic]
+  	enum advanced_type: [:before, :after]
 
   	# Alert instance Methods
   	def observable
@@ -109,6 +110,7 @@ module ActsAsAlertable
 			name: name,
 			created_at: created_at,
 			kind: kind,
+			advanced_type: advanced_type,
 			cron_format: cron_format,
 			observable_date: observable,
 			alertable_type: alertable_type,

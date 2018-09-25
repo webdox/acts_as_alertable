@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906185526) do
+ActiveRecord::Schema.define(version: 20180925182724) do
 
   create_table "acts_as_alertable_alert_alertables", force: :cascade do |t|
     t.integer  "alert_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180906185526) do
     t.string   "name"
     t.string   "observable_date"
     t.integer  "kind",                     default: 0
+    t.integer  "advanced_type",            default: 0
     t.string   "cron_format",              default: "0 0 1 * *"
     t.string   "alertables_custom_method"
     t.text     "notifications"
