@@ -101,7 +101,17 @@ module ActsAsAlertable
 	end
 
 	context "methods" do
-		it "very day of August must be sendeable for alert3" do
+		it "every day of September must be sendeable for alert3 after specific date" do
+			@newComment = Comment.create! title: "New Comment", release_date: Date.new(2018,9,18)
+			@newAlert = @newComment.alerts.create! name: "New Alert", observable_date: :release_date, kind: :advanced_periodic, cron_format: '0 0 * 9 *', advanced_type: 'after'
+
+			@newAlert.sendeable_date?(Date.new(2018,9,16)).should eq(false)
+			@newAlert.sendeable_date?(Date.new(2018,9,17)).should eq(false)
+			@newAlert.sendeable_date?(Date.new(2018,9,18)).should eq(true)
+			@newAlert.sendeable_date?(Date.new(2018,9,19)).should eq(true)
+		end
+
+		it "every day of August must be sendeable for alert3" do
 			@alert3.sendeable_date?(Date.new(2016,8,5)).should eq(true)
 			@alert3.sendeable_date?(Date.new(2017,8,31)).should eq(true)
 			@alert3.sendeable_date?(Date.new(2018,9,15)).should eq(false)

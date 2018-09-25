@@ -62,9 +62,20 @@ module ActsAsAlertable
 		alertables.map{|a| a.alerteds_for(self)}.flatten.uniq
 	end
 
+	def advanced_type_operator
+		return "<=" if advanced_type == 'before'
+		return '>='
+	end
+
 	def sendeable_date? date
-		trigger_dates.map{|d|d.to_date}.include?(date.to_date) ||
-		(kind == "simple_periodic" && cron_match?(date))
+		return trigger_dates.map{|d|d.to_date}.include?(date.to_date) if kind == 'date_trigger'
+		return cron_match?(date) if kind == "simple_periodic"
+		sendeable = false
+		observable_dates.each do |_date|
+			sendeable ||= date.send(advanced_type_operator, _date)
+			break if sendeable
+		end
+		sendeable && cron_match?(date)
 	end
 
 	def cron_match? date
