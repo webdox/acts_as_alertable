@@ -11,7 +11,7 @@ module ActsAsAlertable
       end
 
       it "renders the headers" do
-        mail.subject.should eq("[#{ActsAsAlertable::Alert.model_name.human}] #{@alert.name} | #{@article.descriptive_name}")
+        mail.subject.should eq("[#{Alert.model_name.human}] #{@alert.name} | #{@article.descriptive_name}")
         mail.to.should eq([@user.email])
         mail.from.should eq(["from@example.com"])
       end
