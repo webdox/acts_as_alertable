@@ -10,8 +10,9 @@ module ActsAsAlertable
       @alert = alert
       @alerted = alerted
       @alertable = alertable
+      @subject ||= "[#{Alert.model_name.human}] #{@alert.name} | #{@alertable.descriptive_name}"
 
-      mail to: @alerted.descriptive_email, subject: "[#{Alert.model_name.human}] #{@alert.name} | #{@alertable.descriptive_name}"
+      mail to: @alerted.descriptive_email, subject: @subject
     end
   end
 end
