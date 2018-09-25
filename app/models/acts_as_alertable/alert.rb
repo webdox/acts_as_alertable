@@ -143,7 +143,7 @@ module ActsAsAlertable
 	end
 
 	def notify alerted, alertable
-		ActsAsAlertable::AlertMailer.notify(alerted, alertable).deliver
+		ActsAsAlertable::AlertMailer.notify(alerted, alertable, self).deliver
 	end
   end
 end

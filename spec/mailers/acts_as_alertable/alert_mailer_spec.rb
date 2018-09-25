@@ -6,11 +6,12 @@ module ActsAsAlertable
       let(:mail) do
         @user = User.create! email: 'test@user.com'
         @article = AlertableArticle.create! title: 'Article1'
-        AlertMailer.notify(@user, @article)
+        @alert = @article.alerts.create name: 'Alerta!'
+        AlertMailer.notify(@user, @article, @alert)
       end
 
       it "renders the headers" do
-        mail.subject.should eq("[ActsAsAlertable] #{@article.descriptive_name}")
+        mail.subject.should eq("[#{ActsAsAlertable::Alert.model_name.human}] #{@alert.name} | #{@article.descriptive_name}")
         mail.to.should eq([@user.email])
         mail.from.should eq(["from@example.com"])
       end
