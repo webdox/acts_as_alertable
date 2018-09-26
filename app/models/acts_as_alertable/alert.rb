@@ -149,7 +149,7 @@ module ActsAsAlertable
 	def alertables_for_date date
 		ids = trigger_dates_object[date] if kind == 'date_trigger'
 		ids = alertables.map{|a| a.id } if kind == 'simple_periodic'
-		ids = alertables.select{|a| data.send(advanced_type_operator, a.send(observable))}.map{|a| a.id } if kind == 'advanced_periodic'
+		ids = alertables.select{|a| date.send(advanced_type_operator, a.send(observable))}.map{|a| a.id } if kind == 'advanced_periodic'
 		alertables.select{|e| ids.include?(e.id)}
 	end
 
