@@ -146,10 +146,15 @@ module ActsAsAlertable
 		send_notifications(date)
 	end
 
-	def send_notifications date
-		ids = trigger_dates_object[date]
+	def alertables_for_date date
+		ids = trigger_dates_object[date] if kind == 'date_trigger'
 		ids = alertables.map{|a| a.id } if kind == 'simple_periodic'
-		alertables.select{|e| ids.include?(e.id)}.each do |alertable|
+		ids = alertables.select{|a| data.send(advanced_type_operator, a.send(observable))}.map{|a| a.id } if kind == 'advanced_periodic'
+		alertables.select{|e| ids.include?(e.id)}
+	end
+
+	def send_notifications date
+		alertables_for_date(date).each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
 				self.notify(alerted, alertable)
 			end
