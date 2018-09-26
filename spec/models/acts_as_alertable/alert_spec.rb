@@ -109,6 +109,8 @@ module ActsAsAlertable
 			@newAlert.sendeable_date?(Date.new(2018,9,17)).should eq(false)
 			@newAlert.sendeable_date?(Date.new(2018,9,18)).should eq(true)
 			@newAlert.sendeable_date?(Date.new(2018,9,19)).should eq(true)
+			@newAlert.alertables_for_date(Date.new(2018,9,17)).should eq([])
+			@newAlert.alertables_for_date(Date.new(2018,9,18)).should eq([@newComment])
 		end
 
 		it "every day of August must be sendeable for alert3" do
