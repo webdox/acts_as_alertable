@@ -1,4 +1,3 @@
-require 'pry'
 module ActsAsAlertable
   class Alert < ActiveRecord::Base
   	has_many :alert_alertables
