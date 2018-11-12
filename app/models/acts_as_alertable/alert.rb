@@ -153,6 +153,8 @@ module ActsAsAlertable
 	end
 
 	def send_notifications date
+		return if alertable_model.try(:trigger_acts_as_alertable)
+
 		alertables_for_date(date).each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
 				self.notify(alerted, alertable)
