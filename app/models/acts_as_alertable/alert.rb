@@ -152,8 +152,15 @@ module ActsAsAlertable
 		alertables.select{|e| ids.include?(e.id)}
 	end
 
+	def custom_trigger
+		result = false
+		result ||= alertable_model.try(:trigger_acts_as_alertable, self)
+		self.send(alertable_type.underscore.pluralize).map{|a| result ||= a.try(:trigger_acts_as_alertable, self)}
+		result
+	end
+
 	def send_notifications date
-		return if alertable_model.try(:trigger_acts_as_alertable)
+		return if custom_trigger
 
 		alertables_for_date(date).each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
