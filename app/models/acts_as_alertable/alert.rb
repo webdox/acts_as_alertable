@@ -137,11 +137,16 @@ module ActsAsAlertable
 	end
 
 	def self.check_for date=Date.today
-		self.all.each{|alert| alert.check_for(date)}
+		results = {}
+		self.all.each do |alert|
+			result = alert.check_for(date)
+			results["alert_#{alert.id}"] = result if result.any?
+		end
+		results
 	end
 
 	def check_for date=Date.today
-		return unless sendeable_date?(date)
+		return [] unless sendeable_date?(date)
 		send_notifications(date)
 	end
 
@@ -160,17 +165,24 @@ module ActsAsAlertable
 	end
 
 	def send_notifications date
-		return if custom_trigger
-
+		results = []
+		return results if custom_trigger
 		alertables_for_date(date).each do |alertable|
 			alertable.alerteds_for(self).each do |alerted|
-				self.notify(alerted, alertable)
+				results << self.notify(alerted, alertable)
 			end
 		end
+		results
 	end
 
 	def notify alerted, alertable
-		ActsAsAlertable::AlertMailer.notify(alerted, alertable, self).deliver
+		result = {alerted_type: alerted.class.to_s, alerted_id: alerted.id, alertable_type: alertable.class.to_s, alertable_id: alertable.id}
+		begin
+			ActsAsAlertable::AlertMailer.notify(alerted, alertable, self).deliver
+			result.merge(success: true)
+		rescue => e
+			result.merge({success: false, error: e})
+		end
 	end
   end
 end
