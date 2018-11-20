@@ -43,7 +43,7 @@ module ActsAsAlertable
 	end
 
 	def observable_dates
-		return (alertables.pluck(observable).map{|e| e.try(:to_date)}.uniq - [nil]) if alertable_model.attribute_names.include?(observable)
+		return (alertables.map{|e| e.try(observable)}.map{|e| e.try(:to_date)}.uniq - [nil]) if alertable_model.attribute_names.include?(observable)
 
 		alertables.map{|a| a.send(observable).try(:to_date)}.uniq - [nil]
 	end
